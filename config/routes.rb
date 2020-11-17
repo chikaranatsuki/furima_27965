@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  # get 'items/new'
+  root 'items#index'
   devise_for :users
-  root to: "items#index"
-  resources :items do
-    resources :transactions, only: [:index, :new, :create]
-  end
+
+  resources :items
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
