@@ -41,3 +41,4 @@ class TransactionsController < ApplicationController
       currency: 'jpy'
     )
   end
+end
