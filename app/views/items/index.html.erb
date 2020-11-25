@@ -124,14 +124,14 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
     <ul class='item-lists'>
-      <% if @items[0] != nil%>
-      <%# <% if @items[0].persisted? %>   <%# Active Record object がDB に保存済みかどうかを判定するメソッド %>
+      <% if @items != nil%>
+      <%# <% if @items[0].persisted?   Active Record object がDB に保存済みかどうかを判定するメソッド %>
       <% @items.each do |item|%>
       <li class='list'>
         <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
-          <%= image_tag item.images[0], class: "item-img" %>
-          <%# sold outの表示 %>
+          <%= image_tag item.image, class: "item-img" %>
+          <%# <% sold outの表示 %> 
           <% if item.item_transaction != nil %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
@@ -180,9 +180,9 @@
   <%# //商品一覧 %>
 </div>
 </div>
-<%= link_to('/items/:item_id/transactions/new', class: 'purchase-btn') do %>
+<%= link_to('/items/new', class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
  
