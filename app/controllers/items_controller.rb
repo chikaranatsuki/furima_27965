@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  
   def index
     @items = Item.all.order(created_at: :desc)
   end
@@ -21,14 +21,16 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
+    @item = Item.find(params[:id])
     return redirect_to root_path if current_user.id != @item.user.id
-  end
+    end
     
   def update
-    # binding.pry
+    @item = Item.find(params[:id])
     @item.update(item_params) if current_user.id == @item.user.id
     return redirect_to item_path if @item.valid?
     render 'edit'
@@ -53,9 +55,5 @@ class ItemsController < ApplicationController
       :scheduled_delivery_id,
       :price
     ).merge(user_id: current_user.id)
-  end
-
-  def set_item
-    @item = Item.find(params[:id])
   end
 end

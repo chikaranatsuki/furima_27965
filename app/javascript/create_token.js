@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (path.includes("items") && path.includes("transactions") && /^([1-9]\d*|0)$/.test(params)) {
     const PAYJP_PK = process.env.PAYJP_PK
-    Payjp.setPublicKey("pk_test_de7b9636f0b6dd5a5f67bb6a");
+    Payjp.setPublicKey(PAYJP_PK);
     const form = document.getElementById("charge-form");
 
     form.addEventListener("submit", (e) => {
@@ -30,7 +30,6 @@ window.addEventListener("DOMContentLoaded", () => {
         exp_month: formData.get("exp_month"),
         exp_year: `20${formData.get("exp_year")}`,
       };
-      console.log(card);
 
       Payjp.createToken(card, (status, response) => {
         if (status === 200) {
