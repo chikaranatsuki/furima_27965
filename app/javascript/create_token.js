@@ -33,6 +33,8 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(card);
 
       Payjp.createToken(card, (status, response) => {
+        console.log(status)
+        console.log(response)
         if (status === 200) {
           // response.idでtokenが取得できます。
           const token = response.id;
@@ -40,6 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
           // サーバーにトークン情報を送信するために、inputタグをhidden状態で追加します。
           const tokenObj = `<input value=${token} type="hidden" name='token'>`;
           renderDom.insertAdjacentHTML("beforeend", tokenObj);
+          console.log(okenObj)
           sendWithoutCardInfo()
         } else {
           // window.alert('購入処理に失敗しました。\nお手数ですが最初からやり直してください。');

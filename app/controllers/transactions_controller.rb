@@ -43,6 +43,10 @@ class TransactionsController < ApplicationController
     )
   end
 
+  # def move_to_sign_in
+  #   redirect_to new_user_session_path unless user_signed_in?
+  # end
+
   def select_item
     @item = Item.find(params[:item_id])
   end
