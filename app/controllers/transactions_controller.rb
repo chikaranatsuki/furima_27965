@@ -9,6 +9,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @item_transaction = PayForm.new(item_transaction_params)
     if @item_transaction.valid?
       pay_item
@@ -41,3 +42,12 @@ class TransactionsController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  # def move_to_sign_in
+  #   redirect_to new_user_session_path unless user_signed_in?
+  # end
+
+  def select_item
+    @item = Item.find(params[:item_id])
+  end
+end

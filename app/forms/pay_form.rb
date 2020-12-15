@@ -16,12 +16,12 @@ class PayForm
   end
 
   def save
-    ItemTransaction.create(
+    item_transaction = ItemTransaction.create(
       item_id: item_id,
       user_id: user_id
     )
     Address.create(
-      item_id: item_id,
+      item_transaction_id: item_transaction.id,
       postal_code: postal_code,
       prefecture: prefecture,
       city: city,
