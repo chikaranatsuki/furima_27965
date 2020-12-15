@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
           // サーバーにトークン情報を送信するために、inputタグをhidden状態で追加します。
           const tokenObj = `<input value=${token} type="hidden" name='token'>`;
           renderDom.insertAdjacentHTML("beforeend", tokenObj);
-          console.log(okenObj)
+          console.log(tokenObj)
           sendWithoutCardInfo()
         } else {
           // window.alert('購入処理に失敗しました。\nお手数ですが最初からやり直してください。');
