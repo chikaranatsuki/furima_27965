@@ -14,7 +14,7 @@ FactoryBot.define do
     #   image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/sample.png')) }
     # end
     after(:build) do |message|
-      message.image.attach(io: File.open('public/fixtures/sample.png'), filename: 'sample.png')
+      message.image.attach(io: File.open('spec/fixtures/sample.png'), filename: 'sample.png')
     end
     trait :sold_out do
       after(:create) do |item|
